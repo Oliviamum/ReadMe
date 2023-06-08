@@ -1,46 +1,48 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
-const util= require('util');
+const inquirer = require("inquirer");
+const fs = require("fs");
+const util = require("util");
 const { start } = require("repl");
 
-inquirer.prompt([
-  {
-    type: 'input',
-    name: 'title',
-    message: 'What is the title of your project?'
-  },
-  {
-    type: 'input',
-    name: 'description',
-    message: 'Please provide a brief description of your project:'
-  },
-  {
-    type: 'input',
-    name: 'installation',
-    message: 'How do you install your project?'
-  },
-  {
-    type: 'input',
-    name: 'usage',
-    message: 'How do you use your project?'
-  },
-  {
-    type: 'input',
-    name: 'contributing',
-    message: 'How can others contribute to your project?'
-  },
-  {
-    type: 'input',
-    name: 'tests',
-    message: 'How do you run tests for your project?'
-  },
-  {
-    type: 'input',
-    name: 'license',
-    message: 'What is the license for your project?'
-  }
-]).then((answers) => {
-  const readme = `
+inquirer
+  .prompt([
+    {
+      type: "input",
+      name: "title",
+      message: "What is the title of your project?",
+    },
+    {
+      type: "input",
+      name: "description",
+      message: "Please provide a brief description of your project:",
+    },
+    {
+      type: "input",
+      name: "installation",
+      message: "How do you install your project?",
+    },
+    {
+      type: "input",
+      name: "usage",
+      message: "How do you use your project?",
+    },
+    {
+      type: "input",
+      name: "contributing",
+      message: "How can others contribute to your project?",
+    },
+    {
+      type: "input",
+      name: "tests",
+      message: "How do you run tests for your project?",
+    },
+    {
+      type: "input",
+      name: "license",
+      message: "What is the license for your project?",
+    },
+  ])
+  .then((answers) => {
+    const readme = `
 # ${answers.title}
 
 ${answers.description}
@@ -74,19 +76,14 @@ ${answers.tests}
 ${answers.license}
 `;
 
-  fs.writeFile('README.md', readme, (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('README.md file generated successfully!');
-    }
+    fs.writeFile("README.md", readme, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("README.md file generated successfully!");
+      }
+    });
   });
-});
-
-
-
-
-
 
 /*const inquirer = require("inquirer");
 const fs = require ("fs");
